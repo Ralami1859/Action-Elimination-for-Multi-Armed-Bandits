@@ -1,0 +1,21 @@
+function SetOfEstimatedBestArms = LUCB(arms, m_arms, epsilon, delta, expParam)
+    t = 1;  b = 1;
+    K = length(arms);
+    mu_hat = zeros(1,K); 
+    for i = 1:K;
+        mu_hat(i) = rand() < arms(i);
+    end
+    NbrPlayArms = ones(1,K);
+    
+    [B, L, U] = computeIndices_c(mu_hat, NbrPlayArms, expParam, b, m_arms, delta);
+    [~, J] = min_set(B, 1, m_arms);
+    armTP_t = indentify_u_l(U, L, J);
+    B = inf;
+    while B >= epsilon;
+        t = t+1;
+        reward = rand(1,2) < arms(armTP_t);
+        [mu_hat, NbrPlayArms] = LUCB_updateConfBounds(armTP_t, reward, mu_hat, NbrPlayArms);
+        [armTP_t,J,U,L, B] = LUCB_Indentify_l_u(mu_hat, NbrPlayArms, expParam, b, m_arms, delta);
+        B = U(armTP_t(2)) - L(armTP_t(1));
+    end
+    SetOfEstimatedBestArms = J;
