@@ -2,7 +2,7 @@
 
 Implementation of:
 <ul>
- <li>Naive Elimination </li>
+ <li>Naive Elimination (see [I'm an inline-style link](https://www.google.com)) </li>
  <li>Successive Elimination </li>
  <li>Median Elimination </li>
  <li>UGapEc </li>
