@@ -4,7 +4,7 @@ function [EstimatedBestArm, SampleComplexity] = SuccessiveElimination(arms, delt
     %% Initialization
     S = arms; t = 1; SampleComplexity = 0;
     K = length(arms);
-    p_hat = rand(1,K) < arms;
+    p_hat = (rand(1,K) < arms)*1;
     SampleComplexity = SampleComplexity + K;
     %% Learning
     while (length(S) > 1)

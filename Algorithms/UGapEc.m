@@ -7,7 +7,7 @@ function [SetOfEstimatedBestArms, SampleComplexity] = UGapEc(arms, m_arms, epsil
     addpath(genpath('../Modules/'))
     %% Inilizalization
     K = length(arms); b = 1; 
-    mu_hat = rand(1,K) < arms ;
+    mu_hat = (rand(1,K) < arms)*1 ;
     NbrPlayArms = ones(1,K);
     [B] = computeIndices_c(mu_hat, NbrPlayArms, expParam, b, m_arms, delta);
     [~, J] = min_set(B, 1, m_arms);
