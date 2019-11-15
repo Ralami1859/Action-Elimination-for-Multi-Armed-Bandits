@@ -1,4 +1,6 @@
-function [value, indices] = max_set(vect,m,n)
+%% Extracting the set of n highest values in vect
+
+function [value, indices] = max_set(vect,n)
     [value, indices] = sort(vect,'descend');
-    value = value(m:n); 
-    indices = indices(m:n);
+    value = value(1:n); 
+    indices = indices(1:n);

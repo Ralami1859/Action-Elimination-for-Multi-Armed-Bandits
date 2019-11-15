@@ -1,4 +1,7 @@
-function [value, indices] = min_set(vect,m,n)
+
+%% Extracting the set of n lowest values in vect
+
+function [value, indices] = min_set(vect, n)
     [value, indices] = sort(vect);
-    value = value(m:n);
-    indices = indices(m:n);
+    value = value(1:n);
+    indices = indices(1:n);

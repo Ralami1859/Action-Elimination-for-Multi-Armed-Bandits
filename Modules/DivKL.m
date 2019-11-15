@@ -1,3 +1,5 @@
+%% Computing Kullback Leibler divergence
+
 function y = DivKL(p,q)
     p = max(p, eps); p = min(p, 1-eps);  
   q = max(q, eps); q = min(q, 1-eps);

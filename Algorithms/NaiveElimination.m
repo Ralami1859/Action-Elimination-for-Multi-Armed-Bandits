@@ -17,7 +17,7 @@ function [EstimatedBestArm, ExpectedMeans, SampleComplexity] = NaiveElimination(
     end
     K = length(arms); SampleComplexity = 0;
     NbrSamples = floor(4./(epsilon.^2).*log(2.*K./delta));
-    SampleComplexity = SampleComplexity + NbrSamples;
+    SampleComplexity = SampleComplexity + K*NbrSamples;
     rewards = (rand(NbrSamples, K) < repmat(arms, NbrSamples, 1))*1; % Sampling
     ExpectedMeans = mean(rewards, 1);
     [~, EstimatedBestArm] = max(ExpectedMeans);
